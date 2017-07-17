@@ -51,11 +51,11 @@ public class Cache {
     private let capacityLimit: UInt
     private var lock: NSLock = NSLock()
 
-    init(capacityLimit: UInt) {
+    public init(capacityLimit: UInt) {
         self.capacityLimit = capacityLimit
     }
 
-    func get(key: String, f: () -> AnyObject) -> AnyObject {
+    public func get(key: String, f: () -> AnyObject) -> AnyObject {
         lock.lock()
         if let item = items[key] {
             dll.moveToHead(item.dllNode)
